@@ -1,5 +1,7 @@
 # FedMC: Class-Wise Dual Knowledge Completion for Federated Learning under Extreme Missing Classes
 
+This paper has been accepted by ICA3PP 2026, and the link to the original text is https://github.com/dawangLi050/FedMC
+
 This repository provides the anonymous implementation of FedMC,
 including the comparison baselines and ablation configurations used
 in the paper.
