@@ -1,0 +1,40 @@
+algorithm: SCAFFOLD
+client_num: 100
+sample_ratio: 0.1
+seed: 0
+device: cuda
+num_classes: 10
+
+dataset: CIFAR10
+partition: hetero
+alpha: 0.05
+
+model: ResNet18
+
+# Keep the existing optimization settings and extend training to 1500 rounds.
+rounds: 1500
+epochs: 3
+batch_size: 64
+
+# Decay during the first 800 rounds, then keep the minimum learning rate
+# through round 1500 so that the convergence plateau can be observed.
+lr: 0.01
+min_lr: 0.0003
+lr_schedule: cosine
+lr_decay_rounds: 800
+
+# Dampen noisy server updates under 10% participation and alpha=0.05.
+global_lr: 0.5
+
+# Local optimizer settings.
+momentum: 0.0
+weight_decay: 0.0005
+
+# Smooth server BN statistics instead of replacing them every round.
+bn_ema: 0.9
+
+# Full Local/Missing evaluation is expensive, so run every 10 rounds.
+eval_interval: 10
+
+# Keep inactive client controls on CPU to reduce GPU memory usage.
+control_device: cpu

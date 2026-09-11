@@ -1,0 +1,52 @@
+algorithm: FedMC_wo_Completion
+client_num: 100
+sample_ratio: 0.1
+seed: 0
+device: cuda
+num_classes: 10
+
+dataset: CIFAR10
+partition: hetero
+alpha: 0.05
+model: ResNet18
+rounds: 1500
+eval_interval: 10
+rep_epochs: 5
+clf_epochs: 2
+balanced_epochs: 1
+momentum: 0.9
+weight_decay: 0.0005
+batch_size: 64
+
+rep_lr_base: 0.1
+clf_lr_base: 0.05
+lr_schedule: cosine
+rep_lr_decay: 0.8
+clf_lr_decay: 0.8
+lr_decay_milestones: [600, 850]
+p_lr: 0.05
+
+lambda: 1.0
+gamma: 2.0
+penalize: CL
+temperature: 0.1
+eps: 0.5
+oracle: false
+weights: uniform
+clustered_protos: true
+
+use_proto_loss: true
+use_classifier_clustering: false
+use_missing_class_completion: false
+update_non_selected_clients: false
+sync_nonselected_prototypes: false
+mask_missing_class_gradients: true
+
+use_differential_privacy: false
+dp_delta: 0.00001
+dp_epsilon: 8.0
+dp_max_grad_norm: 1.0
+dp_noise_multiplier: 0.5
+dp_clip_per_sample: false
+use_secure_aggregation: false
+min_clients_for_privacy: 5

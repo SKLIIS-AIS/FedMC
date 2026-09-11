@@ -1,0 +1,23 @@
+algorithm: FedAvg
+client_num: 100
+sample_ratio: 0.1
+seed: 0
+device: cuda
+num_classes: 10
+
+dataset: CIFAR10
+partition: hetero
+alpha: 0.05
+
+model: ResNet18
+rounds: 1500
+eval_interval: 10
+
+epochs: 5
+momentum: 0.9
+weight_decay: 0.0005
+batch_size: 64
+
+lr: 0.1
+lr_decay: 0.5
+lr_decay_milestones: [500, 800]
